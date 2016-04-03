@@ -12,6 +12,7 @@
 }
 .table>tbody>tr.table-heading>th{
 	padding: 20px 10px;
+	border-top-width: 0px;
 
 }
 .table{
@@ -23,4 +24,18 @@
 .table-hover>tbody>tr.table-heading:hover {
 	color: #fff;
 	background-color: #222;	
+}
+
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+    border-radius: 0px;
+}
+
+.nav-custom {
+	padding: 0px 16px;
+}
+
+.nav-justified {
+    width: 100%;
+    border: 1px solid #2C3E50;
 }

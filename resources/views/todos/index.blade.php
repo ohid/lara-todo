@@ -1,3 +1,4 @@
+@inject('active', 'App\Http\Utilities\Active')
 @extends('layouts.app')
 
 @section('content')
@@ -19,7 +20,22 @@
             @include('partials.modal')
         </div>
     </div>
+    
 
+    <!-- Todo shorting -->
+    <div class="row " style="margin-top: 30px;">
+      <div class="col-md-8 col-md-offset-2 nav-custom">
+        <ul class="nav nav-pills nav-justified">
+          <li class="{{ $active::set(['todo/all']) }}"><a href="{{ route('todo.all') }}">All Todos</a></li>
+          <li class="{{ $active::set(['todo']) }}"><a href="{{ route('todo.index') }}">Current Todos</a></li>
+          <li class="{{ $active::set(['todo/completed']) }}"><a href="{{ route('todo.completed') }}">Completed Todos</a></li>
+        </ul>
+      </div>
+    </div> 
+  
+
+
+    <!-- Toto list -->
     <div class="row">
       <div class="col-md-8 col-md-offset-2 outer-table">
         <table class="table table-hover">

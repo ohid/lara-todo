@@ -17,6 +17,7 @@ class TodoController extends Controller
         $this->middleware('auth');
         $this->todos = $todos;
         $this->user = $user;
+        $this->user_id = \Auth::user()->id;
     }
     /**
      * Display a listing of the resource.
@@ -25,11 +26,19 @@ class TodoController extends Controller
      */
     public function index()
     {   
-        $user_id = \Auth::user()->id;
-        $todos = $this->todos->where('user_id', $user_id)->orderBy('id', 'DESC')->paginate(15);
-        $todo = $this->todos->all();
-        return view('todos.index', compact('todos', 'todo'));
+        return $this->todoCurrentStatus();
     }
+
+    public function all() 
+    {
+        return $this->todoAllStatus();
+    }
+
+    public function completed() 
+    {
+        return $this->todoCompletedStatus();
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -110,6 +119,42 @@ class TodoController extends Controller
         } else {
             return \Response::json(array('error' => 'This task not completed'));
         }
+    }
+
+
+
+    public function todoCurrentStatus() 
+    {
+        $user_id = $this->user_id;
+
+        $todos = $this->todos
+                ->where('user_id', $user_id)
+                ->where('completed', false)
+                ->orderBy('id', 'DESC')->paginate(15);
+
+        return view('todos.index', compact('todos'));   
+    }
+
+    public function todoAllStatus() 
+    {
+        $user_id = $this->user_id;
+
+        $todos = $this->todos
+                ->where('user_id', $user_id)
+                ->orderBy('id', 'DESC')->paginate(15);
+
+        return view('todos.index', compact('todos'));
+    }
+
+    protected function todoCompletedStatus() 
+    {
+        $user_id = $this->user_id;
+
+        $todos = $this->todos
+                ->where('user_id', $user_id)
+                ->where('completed', true)
+                ->orderBy('id', 'DESC')->paginate(15);
+        return view('todos.index', compact('todos'));        
     }
 
 }
