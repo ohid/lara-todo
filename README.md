@@ -5,7 +5,7 @@ Lara todo is a simple todo application that allows you to add todos, edit todos,
 > Lara Todo is built using Laravel 5.2.* and Bootstrap 3.3.6
 
 ### Version
-1.0
+master
 
 ### Installation
 
