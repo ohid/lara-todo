@@ -24,19 +24,20 @@ class TodoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {   
-        return $this->todoCurrentStatus();
-    }
 
     public function all() 
     {
-        return $this->todoAllStatus();
+        return $this->todoStatus('all');
+    }
+
+    public function index()
+    {   
+        return $this->todoStatus('current', false);
     }
 
     public function completed() 
     {
-        return $this->todoCompletedStatus();
+        return $this->todoStatus('completed', true);
     }
 
 
@@ -123,38 +124,25 @@ class TodoController extends Controller
 
 
 
-    public function todoCurrentStatus() 
+
+    protected function todoStatus($completed, $status = false) 
     {
         $user_id = $this->user_id;
 
-        $todos = $this->todos
-                ->where('user_id', $user_id)
-                ->where('completed', false)
-                ->orderBy('id', 'DESC')->paginate(15);
+        if($completed === 'all') {
 
-        return view('todos.index', compact('todos'));   
-    }
-
-    public function todoAllStatus() 
-    {
-        $user_id = $this->user_id;
-
-        $todos = $this->todos
+            $todos = $this->todos
                 ->where('user_id', $user_id)
                 ->orderBy('id', 'DESC')->paginate(15);
 
-        return view('todos.index', compact('todos'));
-    }
-
-    protected function todoCompletedStatus() 
-    {
-        $user_id = $this->user_id;
-
-        $todos = $this->todos
+            return view('todos.index', compact('todos'));
+        } else {
+            $todos = $this->todos
                 ->where('user_id', $user_id)
-                ->where('completed', true)
+                ->where('completed', $status)
                 ->orderBy('id', 'DESC')->paginate(15);
-        return view('todos.index', compact('todos'));        
+            return view('todos.index', compact('todos'));       
+        }
     }
 
 }
