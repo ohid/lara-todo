@@ -64,7 +64,7 @@ Todo listing page
 Create a new todo
 ![Create a new todo](https://09de996736e7126b0872c4a468344180be4ab89b.googledrive.com/host/0B6SVI7iK7bjjU0xabTZGSDhOOGs)
 
-Create a new todo
+Editing todo
 ![Editing todo](https://6d3770be80cc47354cd32e64eedcf0dd3de7318f.googledrive.com/host/0B6SVI7iK7bjjT0wwcTZLbzhMdVk)
 
 Viewing a todo
