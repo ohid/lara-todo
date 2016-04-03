@@ -78,6 +78,18 @@
 
     @yield('content')
 
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="well text-center" style="margin-top: 100px;">
+                        Copyright <a href="http://ohidul.com">Ohidul Islam</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <!-- JavaScripts -->
     <script src="{{ URL::asset('assets/js/jquery.js') }}"></script>
     <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}"></script>
