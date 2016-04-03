@@ -3,6 +3,7 @@ $(document).ready(function() {
 	// Create new todos
 	$('.todo-create-button').on('click', function(e) {
 		e.preventDefault();
+		var $this = $(this);
 
 		var route 	= $(".todos_create_form").attr('action'),
 			token 	= $("input[name='_token']").attr('value'),
@@ -14,13 +15,13 @@ $(document).ready(function() {
 			data: data,
 			dataType: 'json',
 			success: function(data) {
-				$('.form-error').removeClass('alert-warning').addClass('alert alert-success animated fadeInDown').html( data.success );
+				$this.closest('form').find('.form-error').removeClass('alert-warning').addClass('alert alert-success animated fadeInDown').html( data.success );
 				$('form')[0].reset();				
 			},
 			error: function(data) {
 				var errors = (data.responseJSON);
 				$.each(errors, function(key, value){
-					$('.form-error').removeClass('alert-success').addClass('alert alert-warning').html( value );
+					$this.closest('form').find('.form-error').removeClass('alert-success').addClass('alert alert-warning').html( value );
 				});
 			}
 		});
@@ -30,6 +31,7 @@ $(document).ready(function() {
 	// Update todo
 	$('.todo-update-button').on('click', function(e) {
 		e.preventDefault();
+		var $this = $(this);
 
 		var route = $(this).closest('form').attr('action');
 		var data = $(this).closest('form').serialize();
@@ -40,15 +42,13 @@ $(document).ready(function() {
 			data: data,
 			dataType: 'json',
 			success: function(data) {
-				$('.form-error').removeClass('alert-warning').addClass('alert alert-success animated fadeInDown').html( data.success );
+				$this.closest('form').find('.form-error').removeClass('alert-warning').addClass('alert alert-success animated fadeInDown').html( data.success );
 				$('form')[0].reset();
-
-				
 			},
 			error: function(data) {
 				var errors = (data.responseJSON);
 				$.each(errors, function(key, value){
-					$('.form-error').removeClass('alert-success').addClass('alert alert-warning').html( value );
+					$this.closest('form').find('.form-error').removeClass('alert-success').addClass('alert alert-warning').html( value );
 				});
 			}
 		});
