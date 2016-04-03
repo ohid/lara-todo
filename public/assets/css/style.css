@@ -1,0 +1,26 @@
+.new-todo{
+	margin-top: 30px;
+}
+
+.padding-15{
+	padding: 0px 15px;
+}
+
+.table-heading{
+	background-color: #222;
+	color: #fff;
+}
+.table>tbody>tr.table-heading>th{
+	padding: 20px 10px;
+
+}
+.table{
+	border-right: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+
+}
+.table-hover>tbody>tr.table-heading:hover {
+	color: #fff;
+	background-color: #222;	
+}

@@ -1,0 +1,27 @@
+@media (max-width: 480px){
+.new-todo{
+	margin-top: 30px;
+}
+.short_description{
+	display: none;
+}
+}
+
+
+@media (min-width: 480px) and (max-width: 767px){
+body{
+		background: blue;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 979px){
+body{
+		background: orange;
+	}
+}
+
+@media (min-width: 969px) and (max-width: 1169px){
+body{
+		background: red;
+	}
+}
