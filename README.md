@@ -29,7 +29,7 @@ Duplicate `.env.example` file to `.env` file to create a environment file-
 $ cp .env.example .env
 ```
 
-Eit `.env` file with with your database credential
+Edit `.env` file with with your database credential
 
 Now create database tables by running this command-
 ```
