@@ -18,9 +18,7 @@
 <div class="modal fade" id="viewModal-{{ $todo->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalView-{{ $todo->id }}">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-
         @include('partials.view_modal_form')
-
         </div>
     </div>
 </div>

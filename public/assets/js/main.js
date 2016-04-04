@@ -100,4 +100,11 @@ $(document).ready(function() {
 		});
 	});
 
+	// On mouse hover change texts
+	$('.uncomplete').on('mouseover', function() {
+		$(this).text('Uncomplete');
+	}).on('mouseout', function() {
+		$(this).text('completed');
+	});
+
 });

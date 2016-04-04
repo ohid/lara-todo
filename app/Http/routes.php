@@ -21,7 +21,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/todo/completed', ['as' => 'todo.completed', 'uses' => 'TodoController@completed']);
 	Route::get('/todo/all', ['as' => 'todo.all', 'uses' => 'TodoController@all']);
 
-	Route::resource('/todo', 'TodoController', ['except' => ['create', 'edit']]);
+	Route::resource('/todo', 'TodoController', ['except' => ['create', 'edit', 'show']]);
 	Route::post('/todo/complete_todo/{id}', 'TodoController@completeTodo');
 	Route::post('/todo/uncomplete_todo/{id}', 'TodoController@uncompleteTodo');
 

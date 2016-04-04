@@ -19,22 +19,33 @@ class TodoController extends Controller
         $this->user = $user;
         $this->user_id = \Auth::user()->id;
     }
+
+
     /**
-     * Display a listing of the resource.
+     * Display all todos
      *
      * @return \Illuminate\Http\Response
      */
-
     public function all() 
     {
         return $this->todoStatus('all');
     }
 
+    /**
+     * Display a current todos
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {   
         return $this->todoStatus('current', false);
     }
 
+    /**
+     * Display completed todos.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function completed() 
     {
         return $this->todoStatus('completed', true);
@@ -51,17 +62,6 @@ class TodoController extends Controller
     {
         \Auth::user()->todos()->create($request->all());
         return \Response::json(array('success' => 'Your todo created successfully'));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
 
@@ -110,6 +110,10 @@ class TodoController extends Controller
         
     }
 
+    /**
+     * Make any todo as completed
+     * 
+     */
     public function completeTodo($id)
     {
         $todo = Todo::find($id);
@@ -122,7 +126,10 @@ class TodoController extends Controller
         }
     }
 
-
+    /**
+     * Make completed todo as uncomplete
+     * 
+     */
     public function uncompleteTodo($id)
     {
         $todo = Todo::find($id);
@@ -135,7 +142,10 @@ class TodoController extends Controller
         }
     }
 
-
+    /**
+     * Get the sorted status of todo
+     * 
+     */
     protected function todoStatus($completed, $status = false) 
     {
         $user_id = $this->user_id;
