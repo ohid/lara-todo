@@ -123,6 +123,17 @@ class TodoController extends Controller
     }
 
 
+    public function uncompleteTodo($id)
+    {
+        $todo = Todo::find($id);
+        if($todo) {            
+            $todo->completed = false;
+            $todo->save();
+            return \Response::json(array('success' => 'This task is completed'));
+        } else {
+            return \Response::json(array('error' => 'This task not completed'));
+        }
+    }
 
 
     protected function todoStatus($completed, $status = false) 

@@ -23,6 +23,7 @@ Route::group(['middleware' => ['web']], function () {
 
 	Route::resource('/todo', 'TodoController', ['except' => ['create', 'edit']]);
 	Route::post('/todo/complete_todo/{id}', 'TodoController@completeTodo');
+	Route::post('/todo/uncomplete_todo/{id}', 'TodoController@uncompleteTodo');
 
 });
 

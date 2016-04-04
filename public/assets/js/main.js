@@ -60,9 +60,6 @@ $(document).ready(function() {
 		var $this = $(this);
 		var route = $(this).closest('form').attr('action');
 		var token = $(this).prev().val();
-		console.log(route);
-		console.log(token);
-		console.log(this);
 
 		$.ajax({
 			url: route,
@@ -71,7 +68,31 @@ $(document).ready(function() {
 			dataType: 'json',
 			success: function(data) {
 				if(data.success) {
-					$this.text('completed').attr('disabled','disabled');
+					$this.text('completed');
+					$this.closest('tr').find('.btn-edit').hide();
+				} else {
+					alert("Sorry, couldn't able to mark this task as completed. Try again");
+				}
+			}
+		});
+	});
+
+
+	// UnComplete todo
+	$('.uncomplete').on('click', function(e) {
+		e.preventDefault();
+		var $this = $(this);
+		var route = $(this).closest('form').attr('action');
+		var token = $(this).prev().val();
+
+		$.ajax({
+			url: route,
+			type: 'post',
+			data: {'_token' : token},
+			dataType: 'json',
+			success: function(data) {
+				if(data.success) {
+					$this.text('Mark as completed');
 				} else {
 					alert("Sorry, couldn't able to mark this task as completed. Try again");
 				}
