@@ -28,6 +28,9 @@ class CreateNotesTable extends Migration
             $table->foreign('todo_id')
                     ->references('id')
                     ->on('todos');
+                    
+            $table->timestamps();
+
         });
         
     }

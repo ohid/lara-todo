@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use Illuminate\Auth\Access as Gate;
+use Illuminate\Auth\Access\Response;
 use App\Todo;
+use App\Note;
 use App\User;
 use App\Http\Flash as Flash;
 use App\Http\Requests;
@@ -12,12 +13,13 @@ use App\Http\Requests;
 class TodoController extends Controller
 {
 
-    public function __construct(Todo $todos, User $user) 
+    public function __construct(Todo $todos, User $user, Note $note) 
     {
         $this->middleware('auth');
         $this->todos = $todos;
         $this->user = $user;
-        $this->user_id = \Auth::user()->id;
+        $this->note = $note;
+        $this->user_id = @\Auth::user()->id;
     }
 
 
@@ -91,7 +93,6 @@ class TodoController extends Controller
 
     public function destroy($id, Flash $flash)
     {
-        // $this->authorize('destroy', Todo::class);
         $todo = $this->todos->find($id);
 
         if(\Gate::denies('destroy', $todo)) {
@@ -100,8 +101,12 @@ class TodoController extends Controller
         }
 
         if($todo) {
+            $todo->notes()->detach();
+
             $todo->delete();
+
             flash('success', 'Deleted', 'Todo has been deleted successfully');
+            
             return redirect()->back();
         } else {
             flash('error', 'Error','Sorry, something went wrong, please try again.');
@@ -164,6 +169,21 @@ class TodoController extends Controller
                 ->orderBy('id', 'DESC')->paginate(15);
             return view('todos.index', compact('todos'));       
         }
+    }
+
+
+
+    public function deleteNote($todo_id, $id) 
+    {
+        $todo = $this->todos->find($todo_id);
+
+        $note = $this->note->findorfail($id);
+        $note->delete();
+
+        // $todo->notes()->detach($id);
+        
+        return \Response::json(array('success' => 'Your note has been deleted'));
+
     }
 
 }

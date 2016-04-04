@@ -1,6 +1,6 @@
 @if($todo->completed)
     {!! Form::open(['url' => ['/todo/uncomplete_todo', $todo->id], 'method' => 'post']) !!}
-      <button type="submit" class="btn btn-default btn-sm uncomplete"> completed </button>
+      <button type="submit" class="btn btn-default btn-sm uncomplete"> Make it uncomplete</button>
     {!! Form::close() !!}
 @else 
     {!! Form::open(['url' => ['/todo/complete_todo', $todo->id], 'method' => 'post']) !!}

@@ -41,15 +41,17 @@
         <table class="table table-hover">
           <tr class="table-heading">
               <th width="20%">Name</th>
-              <th class="short_description" width="45%">Short Description</th>
+              <th class="short_description" width="20%">Short Description</th>
+              <th width="25%">Created</th>
               <th width="15%">Status</th>
-              <th width="20%">Action</th>
+              <th width="25%">Action</th>
           </tr>
           @if(count($todos))
             @foreach($todos as $todo)
               <tr class="todo-{{ $todo->id }}">
                   <td>{{ str_limit($todo->name, 60) }}</td>
-                  <td class="short_description">{{ str_limit($todo->description, 40) }}</td>
+                  <td class="short_description">{{ str_limit($todo->description, 30) }}</td>
+                  <td>{{ $todo->created_at->diffForHumans() }}</td>
                   <td>
                       @include('partials.todo_complete')
                   </td>

@@ -28,4 +28,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Todo::class);
     }
+
+    public static function gravaterImage() 
+    {
+        return \Gravatar::src(\Auth::user()->email);
+    }
 }

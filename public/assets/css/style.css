@@ -39,3 +39,35 @@
     width: 100%;
     border: 1px solid #2C3E50;
 }
+
+.uncomplete{
+	background-color: #BDC1C1
+}
+
+.single-note{
+	margin-bottom: 25px;
+}
+
+.single-note:hover .delete_note{
+	opacity: 1;
+}
+.delete_note{
+	color: #DA0E0E;
+    border: none;
+    position: relative;
+    right: 0px;
+    top: -2px;
+    background: none;
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+
+.delete_note:hover{
+	background: #DA0E0E;
+	color: #fff;
+	border-radius: 50px;
+}
+
+textarea.form-control{
+	height: 100px !important;
+}
