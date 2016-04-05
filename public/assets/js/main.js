@@ -59,9 +59,9 @@ $(document).ready(function() {
 		e.preventDefault();
 		var $this = $(this);
 
-		var route = $(this).closest('form').attr('action');
-		var data = $(this).closest('form').serialize();
-		var allTodoNotes = $('.all-todo-notes').html();
+		var route = $this.closest('form').attr('action');
+		var data = $this.closest('form').serialize();
+		var allTodoNotes = $this.closest('.all-todo-notes').find('.all-todos').html();
 
 		$.ajax({
 			url: route,
@@ -81,8 +81,8 @@ $(document).ready(function() {
 					      '</div></div>' + 
 				 		  '</div>';
 
-			// $this.closest('.all-todo-notes').has('.no-todo').find('.no-todo').remove();
-			$this.closest('.all-todo-notes').html( allTodoNotes + newNote );
+			$this.closest('.all-todo-notes').find('.no-todo').remove();
+			$this.closest('.all-todo-notes').find('.all-todos').html( allTodoNotes + newNote );
 
 			},
 			error: function(data) {
