@@ -2,7 +2,7 @@
 
 Lara todo is a simple todo application that allows you to add todos, edit todos, delete todos and also mark todo as completed.
 
-In version to there has some new features. Such as a sorting system between completed and non completed todos and User can able to add notes on each todo. 
+In v2.0 there has some new features. Such as a sorting system between completed and non completed todos and User can able to add notes on each todo. 
 
 > Lara Todo is built using Laravel 5.2.* and Bootstrap 3.3.6
 
