@@ -101,8 +101,7 @@ class TodoController extends Controller
         }
 
         if($todo) {
-            $todo->notes()->detach();
-
+            $todo->notes()->delete();
             $todo->delete();
 
             flash('success', 'Deleted', 'Todo has been deleted successfully');
@@ -169,21 +168,6 @@ class TodoController extends Controller
                 ->orderBy('id', 'DESC')->paginate(15);
             return view('todos.index', compact('todos'));       
         }
-    }
-
-
-
-    public function deleteNote($todo_id, $id) 
-    {
-        $todo = $this->todos->find($todo_id);
-
-        $note = $this->note->findorfail($id);
-        $note->delete();
-
-        // $todo->notes()->detach($id);
-        
-        return \Response::json(array('success' => 'Your note has been deleted'));
-
     }
 
 }

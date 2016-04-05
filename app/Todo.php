@@ -22,6 +22,6 @@ class Todo extends Model
 
     public function notes() 
     {
-    	return $this->belongsToMany('\App\Note');
+    	return $this->hasMany(Note::class);
     }
 }

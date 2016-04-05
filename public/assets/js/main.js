@@ -81,7 +81,8 @@ $(document).ready(function() {
 					      '</div></div>' + 
 				 		  '</div>';
 
-			$('.all-todo-notes').html( allTodoNotes + newNote );
+			// $this.closest('.all-todo-notes').has('.no-todo').find('.no-todo').remove();
+			$this.closest('.all-todo-notes').html( allTodoNotes + newNote );
 
 			},
 			error: function(data) {

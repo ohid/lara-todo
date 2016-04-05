@@ -14,23 +14,9 @@ class CreateNotesTable extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('todo_id');
             $table->text('body');
             $table->timestamps();
-        });
-
-        Schema::create('note_todo', function (Blueprint $table) {
-            $table->integer('note_id')->unsigned();
-            $table->foreign('note_id')
-                    ->references('id')
-                    ->on('notes');
-
-            $table->integer('todo_id')->unsigned();           
-            $table->foreign('todo_id')
-                    ->references('id')
-                    ->on('todos');
-                    
-            $table->timestamps();
-
         });
         
     }

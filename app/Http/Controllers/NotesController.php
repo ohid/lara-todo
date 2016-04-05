@@ -22,8 +22,7 @@ class NotesController extends Controller
         $todo = $this->todos->find($todo_id);
 
         if($todo) {
-            $note = $this->notes->create($request->all());
-            $todo->notes()->attach($note->id);
+            $note = $todo->notes()->create($request->all());
             return \Response::json(array('success' => 'You have successfully wrote your note', 'note' => $note));
         } else {
             return \Response::json(array('success' => 'Sorry, Something went wrong. Please try again'));
@@ -32,14 +31,8 @@ class NotesController extends Controller
 
     public function deleteNote(Request $request, $id)
     {
-
-        $todo_id = $request->get('todo');
-        $todo = $this->todos->findorfail($todo_id);
-
         $note = $this->notes->findorfail($id);
-        $todo->notes()->detach($id);
         $note->delete();
-
         
         return \Response::json(array('success' => 'Your note has been deleted'));
 

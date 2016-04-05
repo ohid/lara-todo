@@ -26,7 +26,6 @@
                   </div>
                 </div>
               {!! Form::open(['url' => "todo/delete_note/{$note->id}", 'method' => 'post', 'class' => 'delete_note_form']) !!}
-                  <input type="hidden" name="todo" value="{{ $todo->id }}">
                   <button type="submit" class="delete_note"><i class="fa fa-times"></i></button>
               {!! Form::close() !!}
               </div>
