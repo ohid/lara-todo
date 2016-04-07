@@ -26,7 +26,7 @@ $ cd lara-todo
 
 Install composer-
 ```sh
-$ composer install 
+$ composer install  
 ```
 
 Duplicate `.env.example` file to `.env` file to create a environment file-
